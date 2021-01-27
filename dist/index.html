@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MediaMonks Slider Puzzle</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="./css/index.min.css" />
+        <script type="text/javascript" src="./main.js" defer></script>
+    </head>
+    <body>
+        <div id="app">
+            <div class="playground">
+                <h2 class="title">Media Monks Sliding Puzzle</h2>
+                <div class="maze" id="media-monk-puzzle">
+
+                </div>
+                <div class="control-panel">
+                    <div class="timer-container">
+                        <h4>Time elapsed</h4>
+                        <h2 id="timer"></h2>
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" id="reset" class="cta">Restart</button>
+                    </div>
+                    <div class="preview-container">
+                        <h4>Preview</h4>
+                        <div class="preview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="success-dialog" class="dialog">
+            <div class="dialog-wrapper">
+                <div class="dialog-body">
+                    <h1>Congratulations!!</h1>
+                    <h2>You finished the puzzle in</h2>
+                    <h2 class="time"></h2>
+                    <button type="button" class="cta">Play again</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

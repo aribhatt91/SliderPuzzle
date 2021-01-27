@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "module": "ES2015",
+      "target": "ES5",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "declaration": true,
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "rootDir": "."
+    },
+    "include": ["src"]
+  }

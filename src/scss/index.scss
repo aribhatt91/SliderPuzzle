@@ -1,0 +1,181 @@
+@font-face {
+    font-family: mmRegular;
+    src: url(../assets/font/klavika-regular-webfont.woff)
+}
+@font-face {
+    font-family: mmLight;
+    src: url(../assets/font/klavika-light-webfont.woff)
+}
+@font-face {
+    font-family: mmBold;
+    src: url(../assets/font/klavika-bold-webfont.woff)
+}
+@font-face {
+    font-family: mmMedium;
+    src: url(../assets/font/klavika-medium-webfont.woff)
+}
+
+$mazeDimen : 500px;
+$imgUrl: '../assets/images/monks-puzzle.jpg';
+
+body * {
+    font-family: mmRegular;
+}
+.playground {
+    margin: 32px;
+    padding: 24px;
+    background-color: #ececec;
+    display: flex;
+    flex-wrap: wrap;
+    .title {
+        margin: 0;
+        padding-bottom: 16px;
+        width: 100%;
+        color: #333;
+    }
+    .maze {
+        height: $mazeDimen;
+        width: $mazeDimen;
+        background-image: url($imgUrl);
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 1px solid #333;
+        position: relative;
+
+        &:before {
+            content: "";
+            background-color: #000;
+            opacity: 0.8;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .tile {
+            height: ($mazeDimen/4);
+            width: ($mazeDimen/4);
+            background-image: url($imgUrl);
+            background-repeat: no-repeat;
+            position: absolute;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: 0.3s all ease-in-out;
+
+            .index {
+                min-width: 16px;
+                height: 16px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                background-color: #333;
+                color: #fff;
+                border-radius: 50%;
+                font-size: 10px;
+            }
+        }
+        @for $i from 0 through 3 {
+            @for $j from 0 through 3 {
+                $t : $i*4 + $j + 1;
+                $y : -1 * $i/4 * $mazeDimen;
+                $x : -1 * $j/4 * $mazeDimen;
+                .tile:nth-child(#{$t}) {
+                    background-position-x: $x;
+                    background-position-y: $y;
+                }
+            }
+        }
+    }
+    .control-panel {
+        margin-left: 32px;
+        .timer-container {
+            margin-bottom: 32px;
+            #timer {
+                margin-top: 16px;
+                font-family: mmMedium;
+            }
+        }
+        .btn-container {
+            
+        }
+        .preview {
+            width: $mazeDimen/4;
+            height: $mazeDimen/4;
+            background-image: url($imgUrl);
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: 1px solid #333;
+        }
+    }
+}
+.cta {
+    transition: 0.3s all;
+    padding: 16px 24px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #333;
+    }
+}
+
+.dialog {
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.6);
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s all;
+    z-index: 99999;
+    .dialog-wrapper {
+        width: 400px;
+		max-width: 90%;
+		height: auto;
+		padding: 32px;
+		background-color: white;
+		border-radius: 6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		max-height: 90%;
+        overflow: auto;
+        transition: 0.3s all ease-in-out;
+        transform: scale(0.5);
+        opacity: 0;
+        .dialog-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h1, h2 {
+                text-align: center;
+            }
+            .time {
+                margin: 16px;
+            }
+        }
+    }
+    &[show] {
+        opacity: 1;
+        visibility: visible;
+        .dialog-wrapper {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
